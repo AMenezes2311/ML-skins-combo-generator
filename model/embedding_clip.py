@@ -1,8 +1,8 @@
 import os
 import numpy as np
 import torch
-from PIL import Image
 import clip
+from preprocessing import load_all_images
 
 # --------------------------
 # STEP 1 – Load CLIP model
@@ -26,14 +26,10 @@ def load_clip_model():
 # --------------------------
 
 def extract_clip_embedding(model, preprocess, device, image_path):
-    img = Image.open(image_path).convert("RGB")
-
-    # Preprocess the image and move to device
-    img_tensor = preprocess(img).unsqueeze(0).to(device)
-
+    # img_tensor should already be preprocessed and on the correct device
     with torch.no_grad():
         # Encode image with CLIP
-        features = model.encode_image(img_tensor)
+        features = model.encode_image(image_path)
 
         # Optional but recommended: L2-normalize the embedding
         features = features / features.norm(dim=-1, keepdim=True)
@@ -51,15 +47,13 @@ def extract_clip_embedding(model, preprocess, device, image_path):
 def generate_clip_embeddings(input_folder, output_folder, model, preprocess, device):
     os.makedirs(output_folder, exist_ok=True)
 
-    for filename in os.listdir(input_folder):
-        if not filename.lower().endswith((".png", ".jpg", ".jpeg")):
-            continue
+    # Use preprocessing.py to load and preprocess all images
+    images = load_all_images(input_folder)
 
-        skin_id = filename.rsplit(".", 1)[0]
-        img_path = os.path.join(input_folder, filename)
-
+    for skin_id, img_tensor in images.items():
+        img_tensor = img_tensor.to(device)
         # Get embedding
-        emb = extract_clip_embedding(model, preprocess, device, img_path)
+        emb = extract_clip_embedding(model, preprocess, device, img_tensor)
 
         out_path = os.path.join(output_folder, skin_id + ".npy")
         # Save embedding

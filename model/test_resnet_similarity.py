@@ -1,4 +1,4 @@
-from similarity import rank_gloves_for_knife
+from model.similarity_resnet import rank_gloves_for_knife
 
 KNIFE_EMB_DIR = "./embeddings/knives"
 GLOVE_EMB_DIR = "./embeddings/gloves"

@@ -157,8 +157,8 @@ if __name__ == "__main__":
         print(f"  {glove_id}: {score:.4f}")
 
     # Example glove test
-    # test_glove_id = "hand-wraps-cobalt-skulls"
-    # print("Top knives for", test_glove_id)
-    # for knife_id, score in rank_knives_for_glove(test_glove_id, KNIFE_EMB_DIR, GLOVE_EMB_DIR):
-    #     print(f"  {knife_id}: {score:.4f}")
+    test_glove_id = "hand-wraps-cobalt-skulls"
+    print("Top knives for", test_glove_id)
+    for knife_id, score in rank_knives_for_glove(test_glove_id, KNIFE_EMB_DIR, GLOVE_EMB_DIR):
+        print(f"  {knife_id}: {score:.4f}")
 

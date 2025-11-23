@@ -1,6 +1,5 @@
 import os
 from PIL import Image
-import torch
 import torchvision.transforms as transforms
 
 # Transfrom pipeline for image preprocessing

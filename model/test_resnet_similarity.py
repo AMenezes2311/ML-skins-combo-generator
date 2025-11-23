@@ -1,10 +1,10 @@
-from model.similarity_resnet import rank_gloves_for_knife
+from similarity_resnet import rank_gloves_for_knife
 
 KNIFE_EMB_DIR = "./embeddings/knives"
 GLOVE_EMB_DIR = "./embeddings/gloves"
 
 result = rank_gloves_for_knife(
-    knife_id="nomad-knife-crimson-web",
+    knife_id="falchion-knife-tiger-tooth",
     knife_folder=KNIFE_EMB_DIR,
     glove_folder=GLOVE_EMB_DIR,
     top_k=10

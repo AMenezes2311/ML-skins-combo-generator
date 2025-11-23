@@ -140,25 +140,3 @@ def rank_knives_for_glove(
 
     scores.sort(key=lambda x: x[1], reverse=True)
     return scores[:top_k]
-
-
-# --------------------------
-# Simple manual test
-# --------------------------
-
-if __name__ == "__main__":
-    KNIFE_EMB_DIR = "embeddings_clip/knives"
-    GLOVE_EMB_DIR = "embeddings_clip/gloves"
-
-    # Example: change IDs to real ones from your .npy filenames
-    test_knife_id = "m9-bayonet-doppler-phase-2"
-    print("Top gloves for", test_knife_id)
-    for glove_id, score in rank_gloves_for_knife(test_knife_id, KNIFE_EMB_DIR, GLOVE_EMB_DIR):
-        print(f"  {glove_id}: {score:.4f}")
-
-    # Example glove test
-    test_glove_id = "hand-wraps-cobalt-skulls"
-    print("Top knives for", test_glove_id)
-    for knife_id, score in rank_knives_for_glove(test_glove_id, KNIFE_EMB_DIR, GLOVE_EMB_DIR):
-        print(f"  {knife_id}: {score:.4f}")
-

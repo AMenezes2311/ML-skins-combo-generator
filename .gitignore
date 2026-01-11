@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+*.egg-info/
+dist/
+build/
+pip-wheel-metadata/
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Caches / tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage.xml
+htmlcov/
+
+# OS / IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Project outputs (generated data/embeddings)
+data/
+data_cleaned/
+embeddings/
+embeddings_clip/
+*.npy
+
+#PDF
+*.pdf

@@ -1,0 +1,12 @@
+numpy>=1.24
+pillow>=10.0
+
+torch>=2.1
+torchvision>=0.16
+
+rembg>=2.0
+
+ftfy
+regex
+tqdm
+git+https://github.com/openai/CLIP.git
